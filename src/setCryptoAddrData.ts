@@ -27,8 +27,8 @@ const calculateGasMargin = (value: BigNumber) => {
     .div(BigNumber.from(10000));
 };
 
-const setAddrData = async (
-  addr: string,
+const setCryptoAddrData = async (
+  cryptoAddr: string,
   labels: string[],
   category: string,
   subType: string,
@@ -36,8 +36,8 @@ const setAddrData = async (
   // const gasPrice = await caver.rpc.klay.getGasPrice();
   const contract = new Contract(UPPSALA_ADDRESS, UppSala.abi, signer);
 
-  const gasLimit = await contract.estimateGas.setUrlData(
-    addr,
+  const gasLimit = await contract.estimateGas.setAddrData(
+    cryptoAddr,
     labels,
     category,
     subType,
@@ -49,8 +49,8 @@ const setAddrData = async (
     // gasPrice,
   };
 
-  const tx = await contract.setUrlData(
-    addr,
+  const tx = await contract.setAddrData(
+    cryptoAddr,
     labels,
     category,
     subType,
@@ -62,14 +62,18 @@ const setAddrData = async (
 };
 
 const main = async () => {
-  console.log("!! setAddrData !!");
+  console.log("!! setCryptoAddrData !!");
 
-  const addr = "chainlink.click";
-  const labels = ["Scam", "Phishing", "Hack"];
+  const cryptoAddr = "0xd92c98aa04ae575667b9de7574aa576024506d43";
+  const labels = [
+    "Cryptocurrency",
+    "Information Leakage",
+    "Cryptocurrency Laundering",
+  ];
   const category = "blacklist";
-  const subType = "domain";
+  const subType = "KLAY";
 
-  await setAddrData(addr, labels, category, subType);
+  await setCryptoAddrData(cryptoAddr, labels, category, subType);
 };
 
 main();
