@@ -36,7 +36,7 @@ const setCryptoAddrData = async (
   // const gasPrice = await caver.rpc.klay.getGasPrice();
   const contract = new Contract(UPPSALA_ADDRESS, UppSala.abi, signer);
 
-  const gasLimit = await contract.estimateGas.setAddrData(
+  const gasLimit = await contract.estimateGas.setCryptoAddrData(
     cryptoAddr,
     labels,
     category,
@@ -49,7 +49,7 @@ const setCryptoAddrData = async (
     // gasPrice,
   };
 
-  const tx = await contract.setAddrData(
+  const tx = await contract.setCryptoAddrData(
     cryptoAddr,
     labels,
     category,
