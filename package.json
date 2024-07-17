@@ -6,6 +6,9 @@
   "scripts": {
     "setCryptoAddrData": "tsc && node dist/setCryptoAddrData.js",
     "setAddrData": "tsc && node dist/setAddrData.js",
+    "checkAddr": "tsc && node dist/checkAddr.js",
+    "checkCryptoAddr": "tsc && node dist/checkCryptoAddr.js",
+    "addUser": "tsc && node dist/addUser.js",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
