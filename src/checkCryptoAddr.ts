@@ -13,8 +13,13 @@ const signer = new Wallet(process.env.PRIVATE_KEY, provider);
 // const caver = new Caver(process.env.RPC_ENDPOINT);
 
 const checkCryptoAddr = async (addr: string) => {
+  let message = "Hello World";
+
+  const flatSig = await signer.signMessage(message);
+  let sig = ethers.utils.splitSignature(flatSig);
+
   const contract = new Contract(UPPSALA_ADDRESS, UppSala.abi, signer);
-  const resp = await contract.checkCryptoAddr(addr, { from: signer.address });
+  const resp = await contract.checkCryptoAddr(addr, message, [sig.v, sig.r, sig.s]);
   console.log("!! checkCryptoAddr result = ", resp);
 };
 
