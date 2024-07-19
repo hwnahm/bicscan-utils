@@ -4,7 +4,7 @@ import { ethers, Contract, Wallet, utils, BigNumber } from "ethers";
 // import Caver from "caver-js";
 import dotenv from "dotenv";
 
-import { UPPSALA_ADDRESS } from "./config/contracts";
+import { UPPSALA_ADDRESS, UPPSALA_V2_ADDRESS } from "./config/contracts";
 
 dotenv.config();
 
@@ -29,7 +29,8 @@ const calculateGasMargin = (value: BigNumber) => {
 
 const addUser = async (addr: string) => {
   // const gasPrice = await caver.rpc.klay.getGasPrice();
-  const contract = new Contract(UPPSALA_ADDRESS, UppSala.abi, signer);
+  // const contract = new Contract(UPPSALA_ADDRESS, UppSala.abi, signer);
+  const contract = new Contract(UPPSALA_V2_ADDRESS, UppSala.abi, signer);
 
   const gasLimit = await contract.estimateGas.addUser(addr);
 
